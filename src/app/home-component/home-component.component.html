@@ -1,0 +1,25 @@
+
+
+<div class="latest-post-wrap">
+    <h4 class="cat-title">Latest News</h4>
+    <div *ngFor= "let article of articles" class="single-latest-post row align-items-center">
+      <div class="col-lg-5 post-left">
+        <div class="feature-img relative">
+          <div class="overlay overlay-bg"></div>
+          <img class="img-fluid" [src]="article.urlToImage" alt="">
+        </div>
+      </div>
+      <div class="col-lg-7 post-right">
+        <a href="{{article.url}}">
+          <h4>{{article.title | uppercase}}</h4>
+        </a>
+        <ul class="meta">
+          <li><a href="#"><span class="lnr lnr-user"></span>{{article.source.name}}</a></li>
+          <li><a href="#"><span class="lnr lnr-calendar-full"></span>{{article.publishedAt | date:shortDate}}</a></li>
+        </ul>
+        <p>
+          {{article.description}}
+        </p>
+      </div>
+    </div>
+  </div>

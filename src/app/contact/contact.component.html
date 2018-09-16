@@ -1,0 +1,67 @@
+<div class="col-lg-9">
+  <h3>Contact us</h3>
+  <p>If you have any buisness inquiries or questions feel free to send us a mail through this form.</p>
+  <form
+    class       = "form-area contact-form text-right"
+    id          = "myForm"
+    #f          = "ngForm"
+    (ngSubmit)  = "submit(f.value)">
+    <div class="row">
+      <div class="col-lg-6">
+        <input
+          name="fName" 
+          #fName="ngModel"
+          class       = "common-input mb-20 form-control"
+          minlength="3"
+          ngModel
+          placeholder = "Enter your name"
+          required
+          type        = "text"
+        >
+        <div *ngIf="fName.touched && fName.invalid" class="alert alert-danger">
+            <div *ngIf="fName.errors.required">First name field is required</div>
+            <div *ngIf="fName.errors.minlength">First name field should be at least 3 characters long</div>
+        </div>
+        
+        <input
+          required
+          ngModel name  = "email"
+          #email        = "ngModel"
+          placeholder   = "Enter email address"
+          pattern       = "[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$"
+          class         = "common-input mb-20 form-control"
+          type          = "email"
+        >
+        <div *ngIf="email.touched && email.invalid" class="alert alert-danger">
+            <div *ngIf="email.errors.required">Email field is required</div>
+            <div *ngIf="email.errors.pattern">Email field is not formated expectedly</div>
+        </div>
+        <input
+          required
+          ngModel name="subject"
+          #subject="ngModel"
+          placeholder = "Enter subject"
+          class       = "common-input mb-20 form-control"
+          type        = "text"
+        >
+        <div *ngIf="subject.touched && subject.invalid" class="alert alert-danger">
+            <div *ngIf="subject.errors.required">Subject field is required</div>
+        </div>
+        <textarea
+          required
+          ngModel name  = "message"
+          #message      = "ngModel"
+          class         = "common-textarea form-control"
+          placeholder   = "Enter Messege"
+        ></textarea>
+        <div *ngIf="message.touched && message.invalid" class="alert alert-danger">
+            <div *ngIf="message.errors.required">Message field is required</div>
+        </div>
+      </div>
+      <div class="col-lg-12">
+        <div class="alert-msg" style="text-align: left;"></div>
+        <button class="primary-btn primary" [disabled]="f.invalid" style="float: right;">Send Message</button>
+      </div>
+    </div>
+  </form>
+</div>
